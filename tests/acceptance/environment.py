@@ -13,13 +13,12 @@ active_tag_matcher = ActiveTagMatcher(active_tag_value_provider)
 def before_all(context):
     userdata = context.config.userdata
     context.config_0 = userdata.get("config_0", "False")
-    context.driver = webdriver.Firefox(
-        executable_path=GeckoDriverManager().install()
-    )
 
 
 def before_feature(context, feature):
-    pass
+    context.driver = webdriver.Firefox(
+        executable_path=GeckoDriverManager().install()
+    )
 
 
 def before_scenario(context, scenario):
@@ -37,18 +36,18 @@ def after_step(context, step):
 
 
 def after_tag(context, tag):
-    pass
+    ...
 
 
 def after_scenario(context, scenario):
-    pass
+    ...
 
 
 def after_feature(context, feature):
-    pass
-
-
-def after_all(context):
     user_manager = get_user_model()
     user_manager.objects.all().delete()
     context.driver.quit()
+
+
+def after_all(context):
+    ...

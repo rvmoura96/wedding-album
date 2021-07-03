@@ -14,7 +14,7 @@ def step_impl(context):
 @when(u"the guest form is filled with guest data")
 def step_impl(context):
     faker = Faker()
-    user_password = faker.password()
+    context.guest["password"] = faker.password()
 
     # TODO: MOVE TO A PAGE OBJECT
     context.driver.get("http://localhost:8000/wedding/register")
@@ -29,10 +29,10 @@ def step_impl(context):
     email.send_keys(context.guest["email"])
 
     password1 = context.driver.find_element_by_id("id_password1")
-    password1.send_keys(user_password)
+    password1.send_keys(context.guest["password"])
 
     password2 = context.driver.find_element_by_id("id_password2")
-    password2.send_keys(user_password)
+    password2.send_keys(context.guest["password"])
 
     submit = context.driver.find_element_by_tag_name("button")
     submit.click()
