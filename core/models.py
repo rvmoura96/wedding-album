@@ -1,6 +1,5 @@
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 from django.db import models
-from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class CustomUser(AbstractBaseUser):
@@ -10,7 +9,7 @@ class CustomUser(AbstractBaseUser):
     last_name = models.CharField(max_length=50)
     admin = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     required_field = []
 
 

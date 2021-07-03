@@ -1,4 +1,0 @@
-behave
-ipdb
-black
-isort

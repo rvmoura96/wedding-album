@@ -1,9 +1,7 @@
-from django.contrib.auth import get_user_model
-
+from core.models import CustomUser
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-
-from core.models import User
 
 
 class SignUpForm(UserCreationForm):
@@ -12,11 +10,11 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254)
 
     class Meta:
-        model = get_user_model()
+        model = CustomUser
         fields = (
-            'first_name',
-            'last_name',
-            'email',
-            'password1',
-            'password2',
+            "first_name",
+            "last_name",
+            "email",
+            "password1",
+            "password2",
         )

@@ -6,8 +6,8 @@ authors = ["Renan Moura <rvmoura.96@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-behave = "^1.2.6"
 Django = "^3.2.5"
+expects = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -15,7 +15,20 @@ ipdb = "^0.13.9"
 selenium = "^3.141.0"
 webdriver-manager = "^3.4.2"
 Faker = "^8.9.1"
+behave-django = "^1.4.0"
+black = "^21.6b0"
+isort = "^5.9.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+line_length = 79
+multi_line_output = 3
+profile = "black"
+src_paths = ["features", "helpers", "modules"]
