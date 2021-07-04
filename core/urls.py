@@ -1,16 +1,16 @@
 from core.views import (
     PhotoApprovementListView,
     SubmitPhotoView,
+    TimeLineView,
     approve_photo,
     register,
     repprove_photo,
-    TimelineView
 )
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, reverse_lazy
 
 urlpatterns = [
-    path("home", TimelineView.as_view(), name="home"),
+    path("home", TimeLineView.as_view(), name="home"),
     path("login", LoginView.as_view(template_name="login.html"), name="login"),
     path("register", register, name="register"),
     path("submit-photo", SubmitPhotoView.as_view(), name="submit-photo"),

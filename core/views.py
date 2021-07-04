@@ -22,12 +22,11 @@ def register(request):
     return render(request, "register.html", {"form": form})
 
 
-class TimelineView(LoginRequiredMixin, ListView):
+class TimeLineView(LoginRequiredMixin, ListView):
     model = Photo
     paginate_by = 10
     queryset = Photo.objects.filter(approved=True)
     template_name = "home.html"
-
 
 
 class SubmitPhotoView(LoginRequiredMixin, CreateView):
