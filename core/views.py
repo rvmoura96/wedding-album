@@ -56,3 +56,11 @@ def approve_photo(request, photo_uuid):
     photo = Photo.objects.filter(uuid=photo_uuid).update(approved=True)
 
     return redirect("photo-approvement")
+
+
+def repprove_photo(request, photo_uuid):
+    if not request.user.admin:
+        return redirect("home")
+    photo = Photo.objects.filter(uuid=photo_uuid).delete()
+
+    return redirect("photo-approvement")

@@ -5,9 +5,14 @@
 
     <ol>
       {% for photo in page_obj %}
-        <li> <img src="{{ photo.file }}">{{ photo.file }}
-            <a href="{% url 'photo-approve' photo.uuid %}"><button type="button" name="button" id="approve">APPROVE</button></a>
-            {{ photo.uuid }}
+        <li>
+             <img src="{{ photo.file }}">{{ photo.file }}
+            <a href="{% url 'photo-approve' photo.uuid %}">
+                <button type="button" name="button" id="approve">APPROVE</button>
+            </a>
+            <a href="{% url 'photo-repprove' photo.uuid %}">
+                <button type="button" name="button" id="repprove">REPPROVE</button>
+            </a>
         </li>
       {% endfor %}
     </ol>

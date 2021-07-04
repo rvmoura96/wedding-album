@@ -4,6 +4,7 @@ from core.views import (
     approve_photo,
     home,
     register,
+    repprove_photo,
 )
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, reverse_lazy
@@ -25,5 +26,10 @@ urlpatterns = [
     ),
     path(
         "photo-approve/<uuid:photo_uuid>", approve_photo, name="photo-approve"
+    ),
+    path(
+        "photo-repprove/<uuid:photo_uuid>",
+        repprove_photo,
+        name="photo-repprove",
     ),
 ]

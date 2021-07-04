@@ -40,9 +40,9 @@ def step_impl(context):
     context.driver.get(f"http://localhost:8000{reverse('photo-approvement')}")
 
 
-@when("an engaged click on approve")
-def step_impl(context):
-    approve_button = context.driver.find_element_by_id("approve")
+@when('an engaged click on "{action}"')
+def step_impl(context, action):
+    approve_button = context.driver.find_element_by_id(action)
     approve_button.click()
 
 
@@ -62,4 +62,11 @@ def step_impl(context):
 def step_impl(context):
     result = context.driver.current_url.split("8000")[-1]
     expected = reverse("home")
+    expect(expected).to(equal(result))
+
+
+@then('the total of photos should be "{total_photos:d}"')
+def assert_total_of_photos(context, total_photos):
+    expected = total_photos
+    result = Photo.objects.count()
     expect(expected).to(equal(result))
