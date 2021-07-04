@@ -2,5 +2,5 @@ from behave import when
 
 
 @when("the user access logout page")
-def step_impl(context):
+def logout(context):
     context.driver.get("http://localhost:8000/wedding/logout")
