@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
 
 
 def register(request):
@@ -31,3 +32,27 @@ class SubmitPhotoView(LoginRequiredMixin, CreateView):
     fields = ["file"]
     success_url = reverse_lazy("home")
     template_name = "submit_photo.html"
+
+    def form_valid(self, form):
+        form.instance.uploaded_by = self.request.user
+        return super().form_valid(form)
+
+
+class PhotoApprovementListView(LoginRequiredMixin, ListView):
+    model = Photo
+    paginate_by = 10
+    queryset = Photo.objects.filter(approved=False)
+    template_name = "photo-approvement.html"
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.admin:
+            return redirect("home")
+        return super().get(request, *args, **kwargs)
+
+
+def approve_photo(request, photo_uuid):
+    if not request.user.admin:
+        return redirect("home")
+    photo = Photo.objects.filter(uuid=photo_uuid).update(approved=True)
+
+    return redirect("photo-approvement")
