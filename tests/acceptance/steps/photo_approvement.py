@@ -22,7 +22,7 @@ def create_engaged_user(context):
     )
 
 
-@when("an enageg login")
+@when("an enaged login")
 def step_impl(context):
     # TODO: MOVE TO PAGEOBJECTS
 

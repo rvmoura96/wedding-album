@@ -1,5 +1,30 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h2>Logged area</h2>
+    <h2>Wedding Album Timeline</h2>
+
+    <ol>
+      {% for photo in page_obj %}
+        <li>
+             {{ photo.file }}
+             <button type="button" name="button" id="like">Like</button>
+        </li>
+      {% endfor %}
+    </ol>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}

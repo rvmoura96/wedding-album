@@ -22,9 +22,12 @@ def register(request):
     return render(request, "register.html", {"form": form})
 
 
-@login_required()
-def home(request):
-    return render(request, "home.html")
+class TimelineView(LoginRequiredMixin, ListView):
+    model = Photo
+    paginate_by = 10
+    queryset = Photo.objects.filter(approved=True)
+    template_name = "home.html"
+
 
 
 class SubmitPhotoView(LoginRequiredMixin, CreateView):
@@ -50,6 +53,7 @@ class PhotoApprovementListView(LoginRequiredMixin, ListView):
         return super().get(request, *args, **kwargs)
 
 
+@login_required()
 def approve_photo(request, photo_uuid):
     if not request.user.admin:
         return redirect("home")
@@ -58,6 +62,7 @@ def approve_photo(request, photo_uuid):
     return redirect("photo-approvement")
 
 
+@login_required()
 def repprove_photo(request, photo_uuid):
     if not request.user.admin:
         return redirect("home")
