@@ -1,4 +1,7 @@
+from uuid import uuid4
+
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 
@@ -16,3 +19,20 @@ class CustomUser(AbstractBaseUser):
 
     USERNAME_FIELD = "email"
     required_field = []
+
+
+class Photo(models.Model):
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    uuid = models.UUIDField(default=uuid4)
+    file = models.FileField(
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=[
+                    "jpg",
+                    "jpeg",
+                    "png",
+                ]
+            )
+        ]
+    )
+    approved = models.BooleanField(default=False)

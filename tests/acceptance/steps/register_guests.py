@@ -6,12 +6,12 @@ from faker import Faker
 from modules.auxiliar import cast_table_to_dict
 
 
-@given(u"a guest data")
+@given("a guest data")
 def step_impl(context):
     context.guest = cast_table_to_dict(context.table)
 
 
-@when(u"the guest form is filled with guest data")
+@when("the guest form is filled with guest data")
 def step_impl(context):
     faker = Faker()
     context.guest["password"] = faker.password()
@@ -38,7 +38,7 @@ def step_impl(context):
     submit.click()
 
 
-@then(u"the guest should be registered")
+@then("the guest should be registered")
 def step_impl(context):
     user_manager = get_user_model()
 
@@ -47,7 +47,7 @@ def step_impl(context):
     expect(expected).to(equal(result))
 
 
-@then(u'the number of registred users should be "{total_users:d}"')
+@then('the number of registred users should be "{total_users:d}"')
 def step_impl(context, total_users):
     user_manager = get_user_model()
     result = user_manager.objects.count()

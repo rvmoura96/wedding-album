@@ -1,1 +1,5 @@
-"""When you write your constants to help you."""
+from os import getcwd
+from os.path import join
+
+PATH = getcwd()
+ASSETS_DIR = join(PATH, "tests/acceptance/assets")

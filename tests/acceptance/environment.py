@@ -1,5 +1,6 @@
 """Hooks file."""
 from behave.tag_matcher import ActiveTagMatcher
+from core.models import Photo
 from django.contrib.auth import get_user_model
 from ipdb import post_mortem
 from selenium import webdriver
@@ -16,14 +17,13 @@ def before_all(context):
 
 
 def before_feature(context, feature):
-    context.driver = webdriver.Firefox(
-        executable_path=GeckoDriverManager().install()
-    )
+    ...
 
 
 def before_scenario(context, scenario):
-    if active_tag_matcher.should_exclude_with(scenario.effective_tags):
-        scenario.skip(reason="DISABLED ACTIVE-TAG")
+    context.driver = webdriver.Firefox(
+        executable_path=GeckoDriverManager().install()
+    )
 
 
 def before_tag(context, tag):
@@ -40,13 +40,14 @@ def after_tag(context, tag):
 
 
 def after_scenario(context, scenario):
-    ...
+    user_manager = get_user_model()
+    user_manager.objects.all().delete()
+    Photo.objects.all().delete()
+    context.driver.quit()
 
 
 def after_feature(context, feature):
-    user_manager = get_user_model()
-    user_manager.objects.all().delete()
-    context.driver.quit()
+    ...
 
 
 def after_all(context):
