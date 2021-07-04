@@ -2,6 +2,7 @@
 from behave.tag_matcher import ActiveTagMatcher
 from core.models import Photo
 from django.contrib.auth import get_user_model
+from faker import Faker
 from ipdb import post_mortem
 from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
@@ -24,6 +25,7 @@ def before_scenario(context, scenario):
     context.driver = webdriver.Firefox(
         executable_path=GeckoDriverManager().install()
     )
+    context.faker = Faker()
 
 
 def before_tag(context, tag):
