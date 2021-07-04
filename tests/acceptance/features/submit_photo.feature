@@ -1,8 +1,8 @@
 Feature: Submit Photo
   Background: User registered and logged
     Given a guest data
-      | name  | last_name | email                 |
-      | Sokka | Waters    | sokka.waters@mail.com |
+      | first_name | last_name | email                 |
+      | Sokka      | Waters    | sokka.waters@mail.com |
     When the guest form is filled with guest data
     When the user fill the login form with "correct" credentials
 

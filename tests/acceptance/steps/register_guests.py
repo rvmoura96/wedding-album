@@ -2,7 +2,6 @@ from behave import given, then, when
 from core.models import CustomUser
 from django.contrib.auth import get_user_model
 from expects import equal, expect
-from faker import Faker
 from modules.auxiliar import cast_table_to_dict
 
 
@@ -13,14 +12,13 @@ def step_impl(context):
 
 @when("the guest form is filled with guest data")
 def step_impl(context):
-    faker = Faker()
-    context.guest["password"] = faker.password()
+    context.guest["password"] = context.faker.password()
 
     # TODO: MOVE TO A PAGE OBJECT
     context.driver.get("http://localhost:8000/wedding/register")
 
     name = context.driver.find_element_by_id("id_first_name")
-    name.send_keys(context.guest["name"])
+    name.send_keys(context.guest["first_name"])
 
     last_name = context.driver.find_element_by_id("id_last_name")
     last_name.send_keys(context.guest["last_name"])
