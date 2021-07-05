@@ -43,7 +43,7 @@ class SubmitPhotoView(LoginRequiredMixin, CreateView):
 
 class PhotoApprovementListView(LoginRequiredMixin, ListView):
     model = Photo
-    paginate_by = 10
+    paginate_by = 1
     queryset = Photo.objects.filter(approved=False)
     template_name = "photo-approvement.html"
 

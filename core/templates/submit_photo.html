@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Submit your Memory</title>
-    </head>
-    <body>
-    <header>
-        <h1>Submit your Memory</h1>
-    </header>
-    <main>
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit">Submit</button>
-        </form>
-    </main>
-    <footer>
-        OIE
-    </footer>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+{% endblock %}

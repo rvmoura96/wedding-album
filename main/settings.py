@@ -177,4 +177,5 @@ if AWS_ACCESS_KEY_ID:
 
 
 LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "wedding/login"
+LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = 'login'
