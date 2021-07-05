@@ -1,5 +1,7 @@
 from core.views import (
+    CreateCommentaryView,
     PhotoApprovementListView,
+    PhotoDetail,
     SubmitPhotoView,
     TimelineView,
     approve_photo,
@@ -11,7 +13,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, reverse_lazy
 
 urlpatterns = [
-    path("home", TimelineView.as_view(), name="home"),
+    path("", TimelineView.as_view(), name="home"),
     path("login", LoginView.as_view(template_name="login.html"), name="login"),
     path("register", register, name="register"),
     path("submit-photo", SubmitPhotoView.as_view(), name="submit-photo"),
@@ -34,4 +36,8 @@ urlpatterns = [
         name="photo-repprove",
     ),
     path("like-photo/<uuid:photo_uuid>", like_photo, name="photo-like"),
+    path("photo/<int:pk>", PhotoDetail.as_view(), name="photo-detail"),
+    path(
+        "comment-photo", CreateCommentaryView.as_view(), name="photo-comment"
+    ),
 ]

@@ -6,7 +6,9 @@
     <ol>
       {% for photo in page_obj %}
         <li>
-            <img src="{{ photo.file.url }}">
+            <a href="{% url 'photo-detail' photo.pk %}">
+                <img src="{{ photo.file.url }}" id="photo-detail">
+            </a>
             <a href="{% url 'photo-like' photo.uuid %}">
                 <button type="button" name="button" id="like">Like</button>
             </a>

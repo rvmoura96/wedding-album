@@ -2,12 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Wedding register!{% endblock %}</title>
+    <title>{% block title %}Wedding Album!{% endblock %}</title>
   </head>
   <body>
     <header>
-      <h1>My Site</h1>
+      <h1><a href="{% url 'home' %}">Wedding Album!</a></h1>
     </header>
+    <ul>
+        <li><a href="{% url 'submit-photo' %}">Send a memory</a></li>
+        <li><a href="{% url 'photo-approvement' %}">Approve photos</a></li>
+    </ul>
     <main>
       {% block content %}
       {% endblock %}

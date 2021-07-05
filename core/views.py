@@ -1,10 +1,11 @@
-from core.forms import SignUpForm
-from core.models import Photo
+from core.forms import CommentaryForm, SignUpForm
+from core.models import Commentary, Photo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, FormMixin
 from django.views.generic.list import ListView
 
 
@@ -83,3 +84,30 @@ def like_photo(request, photo_uuid):
     photo.save()
 
     return redirect("home")
+
+
+class PhotoDetail(LoginRequiredMixin, FormMixin, DetailView):
+    model = Photo
+    template_name = "photo_detail.html"
+    form_class = CommentaryForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["total_likes"] = self.object.likes.count()
+        context["comments"] = Commentary.objects.filter(photo=self.object)
+
+        return context
+
+class CreateCommentaryView(LoginRequiredMixin, CreateView):
+    model = Commentary
+    fields = ["content"]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.photo_id = int(self.request._post["photo_id"])
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "photo-detail", kwargs={"pk": int(self.request._post["photo_id"])}
+        )
