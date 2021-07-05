@@ -11,7 +11,7 @@
     <ul>
         {% if request.user.is_authenticated %}
         <li><a href="{% url 'submit-photo' %}">Send a memory</a></li>
-            {% if reques.user.admin %}
+            {% if request.user.admin %}
                 <li><a href="{% url 'photo-approvement' %}">Approve photos</a></li>
             {% endif %}
         <li><a href="{% url 'logout' %}">Logout</a></li>
