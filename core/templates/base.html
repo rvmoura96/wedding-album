@@ -9,9 +9,13 @@
       <h1><a href="{% url 'home' %}">Wedding Album!</a></h1>
     </header>
     <ul>
+        {% if request.user.is_authenticated %}
         <li><a href="{% url 'submit-photo' %}">Send a memory</a></li>
-        <li><a href="{% url 'photo-approvement' %}">Approve photos</a></li>
-        <li><a href="{% url 'register' %}">Register</a></li>
+            {% if reques.user.admin %}
+                <li><a href="{% url 'photo-approvement' %}">Approve photos</a></li>
+            {% endif %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
     </ul>
     <main>
       {% block content %}
