@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-from decouple import config, Csv
-from dj_database_url import parse as dburl
 from pathlib import Path
+
+from decouple import Csv, config
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -150,7 +151,7 @@ if AWS_ACCESS_KEY_ID:
     AWS_S3_CUSTOM_DOMAIN = None
     AWS_DEFAULT_ACL = "private"
     AWS_S3_HOST = "us-east-2"
-    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_SIGNATURE_VERSION = "s3v4"
     COLLECTFAST_ENABLED = True
 
     # Configurações arquivos estáticos

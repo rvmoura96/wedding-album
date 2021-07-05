@@ -47,4 +47,5 @@ class Photo(models.Model):
             )
         ]
     )
+    likes = models.ManyToManyField(CustomUser, related_name="users_likes")
     approved = models.BooleanField(default=False)
