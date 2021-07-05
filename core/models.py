@@ -49,3 +49,10 @@ class Photo(models.Model):
     )
     likes = models.ManyToManyField(CustomUser, related_name="users_likes")
     approved = models.BooleanField(default=False)
+
+
+class Commentary(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    content = models.TextField()

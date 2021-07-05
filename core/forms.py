@@ -1,7 +1,8 @@
-from core.models import CustomUser
+from core.models import Commentary, CustomUser
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
 
 
 class SignUpForm(UserCreationForm):
@@ -18,3 +19,9 @@ class SignUpForm(UserCreationForm):
             "password1",
             "password2",
         )
+
+
+class CommentaryForm(ModelForm):
+    class Meta:
+        model = Commentary
+        fields = ["content"]

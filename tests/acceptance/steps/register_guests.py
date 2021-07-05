@@ -1,6 +1,8 @@
 from behave import given, then, when
 from core.models import CustomUser
 from django.contrib.auth import get_user_model
+from django.urls import reverse
+
 from expects import equal, expect
 from modules.auxiliar import cast_table_to_dict
 
@@ -15,7 +17,7 @@ def step_impl(context):
     context.guest["password"] = context.faker.password()
 
     # TODO: MOVE TO A PAGE OBJECT
-    context.driver.get("http://localhost:8000/wedding/register")
+    context.driver.get(f"http://localhost:8000{reverse('register')}")
 
     name = context.driver.find_element_by_id("id_first_name")
     name.send_keys(context.guest["first_name"])

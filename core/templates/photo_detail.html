@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Memory</h2>
+
+     <img src="{{ photo.file.url }}">
+     <p>LIKES: {{ total_likes }}</p>
+     <form method="post" action="{% url 'photo-comment' %}">
+       {% csrf_token %}
+       <input type="hidden" id="photo_id" name="photo_id" value="{{ photo.id }}">
+       {% for field in form %}
+         <p>
+           {{ field.label_tag }}<br>
+           {{ field }}
+           {% if field.help_text %}
+             <small style="color: grey">{{ field.help_text }}</small>
+           {% endif %}
+           {% for error in field.errors %}
+             <p style="color: red">{{ error }}</p>
+           {% endfor %}
+         </p>
+       {% endfor %}
+       <button type="submit">Sign up</button>
+     </form>
+
+     <h2>comentarios</h2>
+     {% for comment in comments %}
+        <p>{{ comment.author }} - {{ comment.content }}</p>
+    {% endfor %}
+
+
+{% endblock %}
