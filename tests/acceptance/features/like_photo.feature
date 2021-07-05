@@ -23,3 +23,9 @@ Feature: Like photo
     When a user access the timeline
     And the user click on "like"
     Then the photo total likes should be "1"
+
+  Scenario: Like a not liked yet photo
+    When a user access the timeline
+    And the user click on "like"
+    And the user click on "like"
+    Then the photo total likes should be "0"

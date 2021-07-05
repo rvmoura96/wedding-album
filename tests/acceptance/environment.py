@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from faker import Faker
 from ipdb import post_mortem
 from selenium import webdriver
-
 from webdriver_manager.firefox import GeckoDriverManager
 
 active_tag_value_provider = {"config_0": False}
@@ -19,6 +18,7 @@ def before_all(context):
     context.driver = webdriver.Firefox(
         executable_path=GeckoDriverManager().install()
     )
+
 
 def before_feature(context, feature):
     ...

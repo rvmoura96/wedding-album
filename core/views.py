@@ -29,7 +29,6 @@ class TimelineView(LoginRequiredMixin, ListView):
     template_name = "home.html"
 
 
-
 class SubmitPhotoView(LoginRequiredMixin, CreateView):
     model = Photo
     fields = ["file"]
@@ -69,3 +68,18 @@ def repprove_photo(request, photo_uuid):
     photo = Photo.objects.filter(uuid=photo_uuid).delete()
 
     return redirect("photo-approvement")
+
+
+@login_required()
+def like_photo(request, photo_uuid):
+    photo = Photo.objects.get(uuid=photo_uuid)
+
+    if request.user not in photo.likes.all():
+        photo.likes.add(request.user)
+        photo.save()
+        return redirect("home")
+
+    photo.likes.remove(request.user)
+    photo.save()
+
+    return redirect("home")
