@@ -26,7 +26,7 @@ def register(request):
 class TimelineView(LoginRequiredMixin, ListView):
     model = Photo
     paginate_by = 10
-    queryset = Photo.objects.filter(approved=True)
+    queryset = Photo.objects.filter(approved=True).order_by("-uploaded_at")
     template_name = "home.html"
 
 
@@ -44,7 +44,7 @@ class SubmitPhotoView(LoginRequiredMixin, CreateView):
 class PhotoApprovementListView(LoginRequiredMixin, ListView):
     model = Photo
     paginate_by = 1
-    queryset = Photo.objects.filter(approved=False)
+    queryset = Photo.objects.filter(approved=False).order_by("-uploaded_at")
     template_name = "photo-approvement.html"
 
     def get(self, request, *args, **kwargs):
