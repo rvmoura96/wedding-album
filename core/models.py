@@ -34,7 +34,7 @@ class CustomUser(AbstractBaseUser):
 
 class Photo(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    uploaded_by = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    uploaded_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     uuid = models.UUIDField(default=uuid4)
     file = models.FileField(
         validators=[

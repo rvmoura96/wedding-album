@@ -6,8 +6,8 @@
     <ol>
       {% for photo in page_obj %}
         <li>
-             {{ photo.file }}
-             <button type="button" name="button" id="like">Like</button>
+            <img src="{{ photo.file.url }}">
+            <button type="button" name="button" id="like">Like</button>
         </li>
       {% endfor %}
     </ol>
