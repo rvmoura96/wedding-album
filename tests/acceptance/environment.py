@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from faker import Faker
 from ipdb import post_mortem
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from core.models import Photo
@@ -17,9 +18,16 @@ active_tag_matcher = ActiveTagMatcher(active_tag_value_provider)
 def before_all(context):
     userdata = context.config.userdata
     context.config_0 = userdata.get("config_0", "False")
-    context.driver = webdriver.Firefox(
-        executable_path=GeckoDriverManager().install()
-    )
+    browser = userdata.get("browser", "firefox").lower()
+    capabilities = {
+        "firefox": webdriver.Firefox(
+            executable_path=GeckoDriverManager().install()
+        ),
+        "chrome": webdriver.Chrome(
+            executable_path=ChromeDriverManager().install()
+        )
+    }
+    context.driver = capabilities[browser]
     context.server_url = userdata.get("server_url", "http://localhost:8000")
 
 
