@@ -20,6 +20,7 @@ def before_all(context):
     context.driver = webdriver.Firefox(
         executable_path=GeckoDriverManager().install()
     )
+    context.server_url = userdata.get("server_url", "http://localhost:8000")
 
 
 def before_feature(context, feature):

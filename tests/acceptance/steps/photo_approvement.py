@@ -24,8 +24,6 @@ def create_engaged_user(context):
 
 @when("an enaged login")
 def step_impl(context):
-    # TODO: MOVE TO PAGEOBJECTS
-    # context.driver.get(f"http://localhost:8000{reverse('login')}")
     sleep(1)
     email = context.driver.find_element_by_id("id_username")
     email.send_keys(context.engaged["email"])
@@ -57,7 +55,7 @@ def step_impl(context, total_photos):
 
 @when("a guest try to access the photo approvement page")
 def step_impl(context):
-    context.driver.get(f"http://localhost:8000{reverse('photo-approvement')}")
+    context.driver.get(f"{context.server_url}{reverse('photo-approvement')}")
 
 
 @then("the guest should be redirected to home page")

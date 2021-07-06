@@ -14,7 +14,7 @@ def step_impl(context):
 
 @when("the user access the platform")
 def step_impl(context):
-    context.driver.get("http://localhost:8000")
+    context.driver.get(context.server_url)
 
 
 @when("click on sign up")
@@ -29,7 +29,7 @@ def step_impl(context):
     context.guest["password"] = context.faker.password()
 
     # TODO: MOVE TO A PAGE OBJECT
-    context.driver.get(f"http://localhost:8000{reverse('register')}")
+    context.driver.get(f"{context.server_url}{reverse('register')}")
     sleep(1)
 
     name = context.driver.find_element_by_id("id_first_name")

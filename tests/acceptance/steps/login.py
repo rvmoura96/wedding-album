@@ -6,7 +6,7 @@ from time import sleep
 
 @given("a user accessing the login page")
 def access_login_page(context):
-    context.driver.get(f"http://localhost:8000{reverse('login')}")
+    context.driver.get(f"{reverse('login')}")
 
 
 @when('the user fill the login form with "{credentials_status}" credentials')
