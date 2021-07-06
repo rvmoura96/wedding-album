@@ -49,12 +49,16 @@ The core folder is a django app, where the database's models are defined and hav
 
 ![database_relationships](db_structure.png)
 
+## Customer Model
 The first model created was the model CustomUser, an extension from AbstractUser from Django.
 
+## Photo Model
 After this step the model Photo was created, this model has a Foreign Key related to the CustomUser model, which relates the publisher to the photo. This Foreign Key relationship is used in this application context since a user can publish one or more photos, but a photo can only be related to one user.
 
+### Relation between Photos and Users
 Then it was added a new relationship between photos and users, this time a Many To Many relationship, used to save the likes from a photo.
 
+## Commentary Model
 The last model from the project is the model Commentary and this table has a Foreign Key to CustomUser to track the author for a comment and a Foreign Key to Photo to relate a comment to a photo.
 
 The other models on the ER Diagram are the default models provided by the framework.
