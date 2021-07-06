@@ -58,3 +58,12 @@ To run the tests run:
 ```
 ./manage.py behave tests/acceptance/features/ --use-existing-database
 ```
+
+# Improvements
+There are some point to be improved on this solution:
+ - The upload should send the photo to a queue system to check the file metadata to guarantee the file is  a real picture and reduce the photo size;
+ - E2E need some refactor to apply the PageObject design pattern to improve the tests maintenance;
+ - The frontend for the application should be developed in a proper framework and considering UX;
+ - Django Rest Framework can be added to move some views to API calls;
+ - Unit tests on application;
+ - Add Docker and Docker-compose to improve environment setup;
