@@ -12,7 +12,7 @@ But all phots must be approved by him or his wife.
 This is an web application developed with Django framework.
 
 
-The dependencies manager used on this project is [Poetry](https://python-poetry.org/). It's suggested to install the projects dependencies using it, this way you can run the E2E tests.
+The dependencies manager used on this project is [Poetry](https://python-poetry.org/). It's suggested to install the projects dependencies using it, this way you can run the E2E tests. The E2E tests were developed using Chrome and Firefox as the browser used on tests.
 
 It's provided a requirements.txt with all the main dependencies, but this way you won't be able to run the project tests.
 
@@ -77,7 +77,7 @@ To run the tests run:
 There are some point to be improved on this solution:
  - The upload should send the photo to a queue system to check the file metadata to guarantee the file is  a real picture and reduce the photo size;
  - E2E need some refactor to apply the PageObject design pattern to improve the tests maintenance;
- - E2E need some refactor to implements the selenium Wait instead of using sleep builtin function; 
+ - E2E need some refactor to implements the selenium Wait instead of using sleep builtin function;
  - The frontend for the application should be developed in a proper framework and considering UX;
  - Django Rest Framework can be added to move some views to API calls;
  - Unit tests on application;

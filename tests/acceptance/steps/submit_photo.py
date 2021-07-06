@@ -14,6 +14,7 @@ def step_impl(context):
 
 @when('the user try submmit a "{file_type}"')
 def step_impl(context, file_type):
+
     FILES = {
         "pdf": f"{ASSETS_DIR}/pdf/sokka.pdf",
         "photo": f"{ASSETS_DIR}/img/sokka.jpg",
@@ -22,6 +23,7 @@ def step_impl(context, file_type):
 
     file = context.driver.find_element_by_id("id_file")
     file.send_keys(FILES[file_type])
+
     submit = context.driver.find_element_by_tag_name("button")
     submit.click()
 

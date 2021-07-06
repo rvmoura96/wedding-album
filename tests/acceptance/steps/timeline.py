@@ -7,7 +7,7 @@ from expects import equal, expect
 
 @when("a user access the timeline")
 def foo(context):
-    context.driver.get(f"http://localhost:8000{reverse('home')}")
+    context.driver.get(f"{context.server_url}{reverse('home')}")
 
 
 @then("the timeline should list all approved photos")

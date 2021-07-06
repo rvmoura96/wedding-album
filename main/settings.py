@@ -129,7 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
-AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default="")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
