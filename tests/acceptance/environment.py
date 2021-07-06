@@ -19,15 +19,20 @@ def before_all(context):
     userdata = context.config.userdata
     context.config_0 = userdata.get("config_0", "False")
     browser = userdata.get("browser").lower()
-    capabilities = {
-        "firefox": webdriver.Firefox(
-            executable_path=GeckoDriverManager().install()
-        ),
-        "chrome": webdriver.Chrome(
-            executable_path=ChromeDriverManager().install()
-        )
+
+    browsers = {
+        "firefox": webdriver.Firefox,
+        "chrome": webdriver.Chrome
     }
-    context.driver = capabilities[browser]
+    capabilities = {
+       "firefox": GeckoDriverManager().install,
+       "chrome": ChromeDriverManager().install
+    }
+
+    context.driver = browsers[browser](
+        executable_path=capabilities[browser]()
+    )
+
     context.server_url = userdata.get("server_url", "http://localhost:8000")
 
 
