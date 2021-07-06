@@ -3,7 +3,7 @@ from behave.tag_matcher import ActiveTagMatcher
 from django.contrib.auth import get_user_model
 from faker import Faker
 from ipdb import post_mortem
-from selenium import webdriver
+from selenium.webdriver import Chrome, Firefox
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
@@ -21,8 +21,8 @@ def before_all(context):
     browser = userdata.get("browser").lower()
 
     browsers = {
-        "firefox": webdriver.Firefox,
-        "chrome": webdriver.Chrome
+        "firefox": Firefox,
+        "chrome": Chrome
     }
     capabilities = {
        "firefox": GeckoDriverManager().install,
