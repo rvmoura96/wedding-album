@@ -16,7 +16,7 @@ On a production environment the database used is Postgres, for development sqlit
 
 The project is hosted on heroku and can be accessed through this url https://wedding-album-rvmoura.herokuapp.com/.
 
-The project structure:
+# The application structure:
 ```
 ├── behave.ini
 ├── core
@@ -41,8 +41,9 @@ The project structure:
 ├── pyproject.toml
 ├── README.rst
 ├── requirements.txt
-├── summary.md
 ```
+
+# Database relationships
 
 The core folder is a django app, where the database's models are defined and have the following relationship:
 
@@ -58,7 +59,7 @@ The last model from the project is the model Commentary and this table has a For
 
 The other models on the ER Diagram are the default models provided by the framework.
 
-
+# The tests project structure:
 ```
 └── tests
     └── acceptance
@@ -103,11 +104,15 @@ In modules directory we can create some functions to help us with the tests, the
 On steps we have the automation for tests, like the actions on the application and the asserts to those actions.
 
 Here we have the tests projects structure, where the features directory is where the
+
+# Conclusion
+
 All uploaded files are saved on AWS S3 as required in the challenge.
 
 There are two kinds of users for the application: the admins (the bride and the groom) and common users (guests). All photos uploaded by the users are sent to be approved by the admins before they become available for all users as required in the challenge.
 
 
+# Improvements
 There are some point to be improved on this solution:
  - The upload should send the photo to a queue system to check the file metadata to guarantee the file is  a real picture and reduce the photo size;
  - E2E need some refactor to apply the PageObject design pattern to improve the tests maintenance;
