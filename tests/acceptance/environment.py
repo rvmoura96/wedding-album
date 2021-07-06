@@ -18,7 +18,7 @@ active_tag_matcher = ActiveTagMatcher(active_tag_value_provider)
 def before_all(context):
     userdata = context.config.userdata
     context.config_0 = userdata.get("config_0", "False")
-    browser = userdata.get("browser", "firefox").lower()
+    browser = userdata.get("browser").lower()
     capabilities = {
         "firefox": webdriver.Firefox(
             executable_path=GeckoDriverManager().install()
