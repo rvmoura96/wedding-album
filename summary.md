@@ -107,8 +107,6 @@ In modules directory we can create some functions to help us with the tests, the
 
 On steps we have the automation for tests, like the actions on the application and the asserts to those actions.
 
-Here we have the tests projects structure, where the features directory is where the
-
 # Conclusion
 
 All uploaded files are saved on AWS S3 as required in the challenge.
