@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from expects import equal, expect
 from modules.auxiliar import cast_table_to_dict
-
+from time import sleep
 
 @given("an engaged data")
 def create_engaged_user(context):
@@ -25,19 +25,21 @@ def create_engaged_user(context):
 @when("an enaged login")
 def step_impl(context):
     # TODO: MOVE TO PAGEOBJECTS
-
-    context.driver.get(f"http://localhost:8000{reverse('login')}")
+    # context.driver.get(f"http://localhost:8000{reverse('login')}")
+    sleep(1)
     email = context.driver.find_element_by_id("id_username")
     email.send_keys(context.engaged["email"])
     password = context.driver.find_element_by_id("id_password")
     password.send_keys(context.engaged["password"])
-    submit = context.driver.find_element_by_tag_name("button")
+    submit = context.driver.find_element_by_id("login")
     submit.click()
 
 
 @when("an engaged access the photo approvement page")
 def step_impl(context):
-    context.driver.get(f"http://localhost:8000{reverse('photo-approvement')}")
+    sleep(1)
+    photo_approvement = context.driver.find_element_by_id("approve_photo")
+    photo_approvement.click()
 
 
 @when('an engaged click on "{action}"')

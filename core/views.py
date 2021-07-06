@@ -1,5 +1,3 @@
-from core.forms import CommentaryForm, SignUpForm
-from core.models import Commentary, Photo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
@@ -7,6 +5,9 @@ from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormMixin
 from django.views.generic.list import ListView
+
+from core.forms import CommentaryForm, SignUpForm
+from core.models import Commentary, Photo
 
 
 def register(request):

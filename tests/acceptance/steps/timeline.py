@@ -1,3 +1,5 @@
+from time import sleep
+
 from behave import then, when
 from django.urls import reverse
 from expects import equal, expect
@@ -11,5 +13,6 @@ def foo(context):
 @then("the timeline should list all approved photos")
 def bar(context):
     expected = True
+    sleep(1)
     result = bool(context.driver.find_element_by_id("like"))
     expect(expected).to(equal(result))

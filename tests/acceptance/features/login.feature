@@ -3,7 +3,10 @@ Feature: Login
     Given a guest data
       | first_name | last_name | email                 |
       | Sokka      | Waters    | sokka.waters@mail.com |
-    When the guest form is filled with guest data
+
+    When the user access the platform
+    And click on sign up
+    And the guest form is filled with guest data
 
   Scenario: Correct credentials login
     Given a user accessing the login page

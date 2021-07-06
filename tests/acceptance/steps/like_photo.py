@@ -1,10 +1,14 @@
+from time import sleep
+
 from behave import then, when
-from core.models import Photo
 from expects import equal, expect
+
+from core.models import Photo
 
 
 @when('the user click on "{button}"')
 def step_impl(context, button):
+    sleep(1)
     button = context.driver.find_element_by_id("like")
     button.click()
 
@@ -12,7 +16,7 @@ def step_impl(context, button):
 @then('the photo total likes should be "{likes_amount:d}"')
 def step_impl(context, likes_amount):
     expected = likes_amount
-    result = Photo.objects.filter(
-        approved=True, likes__gte=likes_amount
-    ).count()
+    sleep(1)
+    likes = context.driver.find_element_by_id("total_likes")
+    result = int(likes.text)
     expect(expected).to(equal(result))

@@ -26,6 +26,15 @@ For a development environment the database used is sqlite, in a production envir
 
 
 # How to run
+First, clone this repository using the following command:
+```
+git clone https://github.com/rvmoura96/wedding-album.git
+```
+
+Then enter into the project directory:
+```
+cd wedding-album
+```
 
 All the instructions to run is assuming that you have Poetry installed and you are on the root directory.
 
@@ -68,6 +77,7 @@ To run the tests run:
 There are some point to be improved on this solution:
  - The upload should send the photo to a queue system to check the file metadata to guarantee the file is  a real picture and reduce the photo size;
  - E2E need some refactor to apply the PageObject design pattern to improve the tests maintenance;
+ - E2E need some refactor to implements the selenium Wait instead of using sleep builtin function; 
  - The frontend for the application should be developed in a proper framework and considering UX;
  - Django Rest Framework can be added to move some views to API calls;
  - Unit tests on application;

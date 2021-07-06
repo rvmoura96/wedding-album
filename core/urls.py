@@ -1,16 +1,18 @@
-from core.views import (
-    CreateCommentaryView,
-    PhotoApprovementListView,
-    PhotoDetail,
-    SubmitPhotoView,
-    TimelineView,
-    approve_photo,
-    like_photo,
-    register,
-    repprove_photo,
-)
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, reverse_lazy
+
+from core.views import (
+    approve_photo,
+    CreateCommentaryView,
+    like_photo,
+    PhotoApprovementListView,
+    PhotoDetail,
+    register,
+    repprove_photo,
+    SubmitPhotoView,
+    TimelineView,
+)
+
 
 urlpatterns = [
     path("", TimelineView.as_view(), name="home"),

@@ -1,6 +1,7 @@
 from behave import given, then, when
 from django.urls import reverse
 from expects import equal, expect
+from time import sleep
 
 
 @given("a user accessing the login page")
@@ -14,11 +15,12 @@ def fill_login_form(context, credentials_status):
         "correct": context.guest["password"],
         "incorrect": "incorrect password",
     }
+    sleep(1)
     email = context.driver.find_element_by_id("id_username")
     email.send_keys(context.guest["email"])
     password = context.driver.find_element_by_id("id_password")
     password.send_keys(PASSWORDS[credentials_status])
-    submit = context.driver.find_element_by_tag_name("button")
+    submit = context.driver.find_element_by_id("login")
     submit.click()
 
 
