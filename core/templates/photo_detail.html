@@ -3,8 +3,11 @@
 {% block content %}
     <h2>Memory</h2>
 
-     <img src="{{ photo.file.url }}">
+     <img src="{{ photo.file.url }}"  height="400" width="800">
      <p>LIKES: {{ total_likes }}</p>
+     <a href="{% url 'photo-like' photo.uuid %}">
+         <button type="button" name="button" id="like">Like</button>
+     </a>
      <form method="post" action="{% url 'photo-comment' %}">
        {% csrf_token %}
        <input type="hidden" id="photo_id" name="photo_id" value="{{ photo.id }}">
@@ -20,10 +23,10 @@
            {% endfor %}
          </p>
        {% endfor %}
-       <button type="submit">Sign up</button>
+       <button type="submit" id="id_comment">Comment</button>
      </form>
 
-     <h2>comentarios</h2>
+     <h2>Comments</h2>
      {% for comment in comments %}
         <p>{{ comment.author }} - {{ comment.content }}</p>
     {% endfor %}

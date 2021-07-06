@@ -13,7 +13,7 @@ def step_impl(context):
 def step_impl(context, comment_content):
     comment_area = context.driver.find_element_by_id("id_content")
     comment_area.send_keys(comment_content)
-    submit_button = context.driver.find_element_by_tag_name("button")
+    submit_button = context.driver.find_element_by_id("id_comment")
     submit_button.click()
 
 

@@ -25,7 +25,7 @@ def register(request):
 
 class TimelineView(LoginRequiredMixin, ListView):
     model = Photo
-    paginate_by = 10
+    paginate_by = 3
     queryset = Photo.objects.filter(approved=True).order_by("-uploaded_at")
     template_name = "home.html"
 
