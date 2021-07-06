@@ -1,0 +1,6 @@
+SECRET_KEY=django-insecure-$oj6+gv$b^r5xyh=$y&fel#67-!($z610o9ghs!3jo@2bt8%90
+DEBUG=True
+AWS_SECRET_ACCESS_KEY=my_aws_secret_access_key
+AWS_STORAGE_BUCKET_NAME=my_aws_bucket_name
+ALLOWED_HOSTS=
+AWS_ACCESS_KEY_ID=my_aws_acces_key

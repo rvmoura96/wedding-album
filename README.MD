@@ -39,6 +39,11 @@ After the installation run this command to activate a virtual environment where 
 poetry shell
 ```
 
+Copy the environment variables sample with the following command:
+```
+cp env-sample .env
+```
+
 With the virtual environment activated, run the following command to create the database for development environment:
 ```
 ./manage.py migrate
