@@ -1,12 +1,12 @@
 from behave import given, then, when
 from django.urls import reverse
-from expects import equal, expect
+from expects import contain, equal, expect
 from time import sleep
 
 
 @given("a user accessing the login page")
 def access_login_page(context):
-    context.driver.get(f"{reverse('login')}")
+    context.driver.get(f"{context.server_url}")
 
 
 @when('the user fill the login form with "{credentials_status}" credentials')
@@ -28,4 +28,4 @@ def fill_login_form(context, credentials_status):
 def assert_login_redirect(context, page_name):
     result = context.driver.current_url.split("8000")[-1]
     expected = reverse(page_name)
-    expect(expected).to(equal(result))
+    expect(result).to(contain(expected))

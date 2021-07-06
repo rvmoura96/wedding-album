@@ -3,20 +3,16 @@
 {% block content %}
     <h2>Photos List</h2>
 
-    <ol>
-      {% for photo in page_obj %}
-        <li>
-             <img src="{{ photo.file.url }}" height="400" width="800" id="photo">
+  {% for photo in page_obj %}
+         <img src="{{ photo.file.url }}" height="400" width="800" id="photo">
 
-            <a href="{% url 'photo-approve' photo.uuid %}">
-                <button type="button" name="button" id="approve">APPROVE</button>
-            </a>
-            <a href="{% url 'photo-repprove' photo.uuid %}">
-                <button type="button" name="button" id="repprove">REPPROVE</button>
-            </a>
-        </li>
-      {% endfor %}
-    </ol>
+        <a href="{% url 'photo-approve' photo.uuid %}">
+            <button type="button" name="button" id="approve">APPROVE</button>
+        </a>
+        <a href="{% url 'photo-repprove' photo.uuid %}">
+            <button type="button" name="button" id="repprove">REPPROVE</button>
+        </a>
+  {% endfor %}
 
     <div class="pagination">
         <span class="step-links">

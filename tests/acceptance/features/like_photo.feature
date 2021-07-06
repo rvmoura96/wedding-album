@@ -12,7 +12,7 @@ Feature: Like photo
     Given the user access the photo submission page
     When the user try submmit a "photo"
     And the user access logout page
-    And an enaged login
+    And an admin login
     And an engaged access the photo approvement page
     And an engaged click on "approve"
     And the user access logout page

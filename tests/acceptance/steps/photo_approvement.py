@@ -22,7 +22,7 @@ def create_engaged_user(context):
     )
 
 
-@when("an enaged login")
+@when("an admin login")
 def step_impl(context):
     sleep(1)
     email = context.driver.find_element_by_id("id_username")

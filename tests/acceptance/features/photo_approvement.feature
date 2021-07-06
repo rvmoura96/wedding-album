@@ -18,12 +18,11 @@ Feature: Photo Approvement
     And the user access logout page
 
   Scenario: Approve a photo
-    When an enaged login
+    When an admin login
     And an engaged access the photo approvement page
     And an engaged click on "approve"
     Then the approved photos number should be "1"
 
-  @wip
   Scenario: Guest try to access photo approvement area
     When the user fill the login form with "correct" credentials
     And a guest try to access the photo approvement page

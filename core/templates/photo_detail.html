@@ -5,6 +5,7 @@
 
      <img src="{{ photo.file.url }}"  height="400" width="800">
      <p>LIKES: <span id="total_likes"> {{ total_likes }} </span></p>
+     <br>
      <a href="{% url 'photo-like' photo.uuid %}">
          <button type="button" name="button" id="like">Like</button>
      </a>

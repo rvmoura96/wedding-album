@@ -18,7 +18,7 @@ Feature: Photo reprovement
 
 
   Scenario: Reprove a photo
-    When an enaged login
+    When an admin login
     And an engaged access the photo approvement page
     And an engaged click on "repprove"
     Then the total of photos should be "0"

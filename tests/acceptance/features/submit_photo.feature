@@ -14,7 +14,7 @@ Feature: Submit Photo
     Given the user access the photo submission page
     When the user try submmit a "photo"
     And the user access logout page
-    And an enaged login
+    And an admin login
     And an engaged access the photo approvement page
     Then the number of photos to be approved should be "1"
 
@@ -22,5 +22,5 @@ Feature: Submit Photo
     Given the user access the photo submission page
     When the user try submmit a "pdf"
     And the user access logout page
-    And an enaged login
+    And an admin login
     Then the number of photos to be approved should be "0"
