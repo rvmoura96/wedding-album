@@ -12,6 +12,7 @@ from modules.auxiliar import cast_table_to_dict
 def step_impl(context):
     context.guest = cast_table_to_dict(context.table)
 
+
 @when("the user access the platform")
 def step_impl(context):
     context.driver.get(context.server_url)

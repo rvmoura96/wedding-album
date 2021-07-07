@@ -14,6 +14,8 @@ This is an web application developed with Django framework.
 
 The dependencies manager used on this project is [Poetry](https://python-poetry.org/). It's suggested to install the projects dependencies using it, this way you can run the E2E tests. The E2E tests were developed using Chrome and Firefox as the browser used on tests.
 
+To choose which browser you'd like to run edit the value from browser on behave.ini, the available options are firefox or chrome.
+
 It's provided a requirements.txt with all the main dependencies, but this way you won't be able to run the project tests.
 
 It was developed with Python 3.9.5.

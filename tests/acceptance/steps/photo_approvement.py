@@ -6,6 +6,7 @@ from expects import equal, expect
 from modules.auxiliar import cast_table_to_dict
 from time import sleep
 
+
 @given("an engaged data")
 def create_engaged_user(context):
     engaged_data = cast_table_to_dict(context.table)

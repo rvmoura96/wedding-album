@@ -99,6 +99,7 @@ class PhotoDetail(LoginRequiredMixin, FormMixin, DetailView):
 
         return context
 
+
 class CreateCommentaryView(LoginRequiredMixin, CreateView):
     model = Commentary
     fields = ["content"]

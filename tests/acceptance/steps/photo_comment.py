@@ -5,6 +5,7 @@ from expects import equal, expect
 
 from core.models import Photo
 
+
 @when("a user acess a photo page")
 def step_impl(context):
     sleep(1)
