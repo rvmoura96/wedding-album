@@ -81,6 +81,13 @@ To run the tests use:
 ./manage.py behave tests/acceptance/features/ --use-existing-database
 ```
 
+
+To create an admin user run the command:
+```
+./manage.py createsuperuser
+```
+
+
 # Improvements
 There are some point to be improved on this solution:
  - The upload should send the photo to a queue system to check the file metadata to guarantee the file is  a real picture and reduce the photo size;
