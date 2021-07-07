@@ -70,7 +70,13 @@ It will be started at **localhost:8000**.
 
 To execute the End-to-End tests the application **MUST BE RUNNING ON LOCALHOST:8000**.
 
-To run the tests run:
+
+To run the tests  open a new terminal and go to where you have clonned this repository, after that run the following command to activate the virtualenv:
+```
+poetry shell
+```
+
+To run the tests use:
 ```
 ./manage.py behave tests/acceptance/features/ --use-existing-database
 ```
